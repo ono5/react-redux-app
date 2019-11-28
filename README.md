@@ -88,3 +88,13 @@ User.propTypes = {
   age: PropTypes.number
 }
 ```
+
+## React State
+Reactのコンポーネントでは、内部に状態を持つことができる。これをStateと呼ぶ。
+
+Propsは、親のコンポーネントから値を渡される。
+Stateは、そのコンポーネント内部からのみ使用される。
+
+Propsは、不変の値。Stateは可変の値。
+
+setStateを使うと状態が変更されたときReactがrenderを走らせる。

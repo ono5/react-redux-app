@@ -1,31 +1,35 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, {Component} from 'react';
+import { VirtualTimeScheduler } from 'rxjs';
 
+const App = () => ( <Counter/> )
 
-const App = () => {
-  const profiles = [
-    {name: "Harry", age: 30},
-    {name: "Hanako", age: 3},
-    {name: "NoName", age:20}
-  ]
-  return(
-    <div>
-      {
-        profiles.map((profile, index) => {
-          return <User name={profile.name} age={profile.age} key={index}/>
-        })
-      }
-    </div>
-  ) 
-}
-
-const User = (props) => {
-  return <div>Hi, I am {props.name}, and {props.age} years old!</div>
-}
-
-User.propTypes = {
-  name: PropTypes.string,
-  age: PropTypes.number.isRequired // isREquiredで必ず設定
+class Counter extends Component {
+  //　初期化
+  constructor(props) {
+    // 親クラスにpropsを渡す
+    super(props)
+    console.log(this.state)
+    // stateが使えるようになる
+    this.state = { count: 0}
+  }
+  handlePlusButton = () => {
+    // setStateが実行されるとrenderが走る
+    this.setState({ count: this.state.count + 1})
+  }
+  handleMinusButton = () => {
+    this.setState({ count: this.state.count - 1})
+  }
+  render() {
+    console.log(this.state)
+    return (
+      <React.Fragment>
+        <div>count: { this.state.count }</div>
+        <button onClick={this.handlePlusButton}>+1</button>
+        <button onClick={this.handleMinusButton}>-1</button>
+      </React.Fragment>
+      
+      )
+  }
 }
 
 export default App;
