@@ -78,3 +78,13 @@ Reactでも使用されている。
 
 ## Props
 Propsは、Componentの属性のこと。
+
+## PropTypes
+型を定義できる。TypeScriptみたい。
+
+```
+User.propTypes = {
+  name: PropTypes.string,
+  age: PropTypes.number
+}
+```
