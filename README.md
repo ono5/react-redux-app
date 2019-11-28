@@ -98,3 +98,18 @@ Stateは、そのコンポーネント内部からのみ使用される。
 Propsは、不変の値。Stateは可変の値。
 
 setStateを使うと状態が変更されたときReactがrenderを走らせる。
+
+## Redux
+
+```
+yarn add redux react-redux
+```
+
+### Action
+アプリケーションの中で何が起きたのかを管理する。
+action is a javascript object.
+
+タイプとタイプにひもづく値をもつ。
+
+ユニークな値でなければならない。
+
