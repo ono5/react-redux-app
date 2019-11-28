@@ -74,3 +74,7 @@ Reactでも使用されている。
 ```
 <script src="/static/js/bundle.js"></script>
 ```
+
+
+## Props
+Propsは、Componentの属性のこと。
