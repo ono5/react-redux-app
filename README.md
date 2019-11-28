@@ -113,3 +113,6 @@ action is a javascript object.
 
 ユニークな値でなければならない。
 
+### Reducer
+actionが発動したとき、そのactionに組み込まれているtypeに応じて、状態をどう変化させるのか定義するもの。
+
