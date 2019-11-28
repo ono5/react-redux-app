@@ -47,3 +47,30 @@ class App extends Component {
   }
 }
 ```
+
+## Babel
+[Babel repl](https://babeljs.io/repl)
+
+Reactは、Babelが組み込まれているから便利かもしれない。
+
+```
+const foo = <div>
+  Hello, world!
+  </div>
+```
+
+```
+"use strict";
+
+var foo = React.createElement("div", null, "Hello, world!");
+```
+
+## Webpack
+
+JavaScript, CSS, 画像などの静的ファイルを一つのJavaScriptファイルにしてくれる便利ツール。
+
+Reactでも使用されている。
+
+```
+<script src="/static/js/bundle.js"></script>
+```
