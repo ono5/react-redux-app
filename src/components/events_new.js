@@ -9,7 +9,10 @@ import { Link } from 'react-router-dom';
 class EventsNew extends Component {
   renderField(field) {
     const { input, label, type, meta: {touched, error}} = field
-    return (<div></div>)
+    return (<div>
+              <input {...input} placeholder={label} type={type} />   
+              {touched && error && <span>{error}</span>}
+            </div>)
   }
   render() {
     return (
