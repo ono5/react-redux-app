@@ -10,6 +10,7 @@ import './index.css';
 import reducer from './reducers'
 import EventsIndex from './components/events_index'
 import EventsNew from './components/events_new'
+import EventsShow from './components/events_show'
 import * as serviceWorker from './serviceWorker';
 
 const enhancer = process.env.NODE_ENV === 'development' ? 
@@ -22,8 +23,12 @@ ReactDOM.render(
     <Provider store={store}>
     <BrowserRouter>
       <Switch>
-        <Route exact path="/events/new" component={EventsNew} />
+        {/* exactは完全マッチ */}
+        <Route path="/events/new" component={EventsNew} />
+        {/* :id -> idは変数であるため:をつける */}
+        <Route path="/events/:id" component={EventsShow} />
         <Route exact path="/" component={EventsIndex} />
+        <Route exact path="/events" component={EventsIndex} />
       </Switch> 
     </BrowserRouter>
     </Provider>,
