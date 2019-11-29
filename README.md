@@ -158,3 +158,12 @@ console.log(_.mapKeys(action.response.data, 'id'))
 
 ## Redux Form
 [Getting Started With redux-form](https://redux-form.com/8.2.2/docs/gettingstarted.md/)
+
+
+## プロパティ
+
+* pristine
+  - 何も状態が変更されていないことを表すもの
+
+* submitting
+  - デフォルトは、false。submitボタンが押されたらtrueになる。submitボタンを一度しか押せなくできる。
