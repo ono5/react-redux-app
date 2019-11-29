@@ -160,10 +160,29 @@ console.log(_.mapKeys(action.response.data, 'id'))
 [Getting Started With redux-form](https://redux-form.com/8.2.2/docs/gettingstarted.md/)
 
 
-## プロパティ
+## submmit desiable プロパティ
 
 * pristine
   - 何も状態が変更されていないことを表すもの
 
 * submitting
   - デフォルトは、false。submitボタンが押されたらtrueになる。submitボタンを一度しか押せなくできる。
+
+## Developer Tool
+[GitHub](https://github.com/zalmoxisus/redux-devtools-extension)
+
+```
+yarn add redux-devtools-extension
+```
+
+### settings
+
+development環境のみ適用させる。
+
+```
+const enhancer = process.env.NODE_ENV === 'development' ? 
+   composeWithDevTools(applyMiddleware(thunk)) : applyMiddleware(thunk)
+```
+
+## Redux DevTools
+[URL](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=ja)
