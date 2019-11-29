@@ -3,10 +3,14 @@ import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router-dom';
 
-// import { postEvent } from '../actions'
+import { postEvents } from '../actions'
 
 
 class EventsNew extends Component {
+  constructor(props) {
+    super(props)
+    this.onSubmit = this.onSubmit.bind(this)
+  }
   renderField(field) {
     const { input, label, type, meta: {touched, error}} = field
     return (<div>
@@ -14,9 +18,16 @@ class EventsNew extends Component {
               {touched && error && <span>{error}</span>}
             </div>)
   }
+
+  async onSubmit(values) {
+    await this.props.postEvents(values)
+    this.props.history.push('/')
+  }
+
   render() {
+    const { handleSubmit } = this.props
     return (
-        <form>
+        <form onSubmit={handleSubmit(this.onSubmit)}>
           <div><Field label="Title" name="title" type="text" component={this.renderField}></Field></div>
           <div><Field label="Body" name="body" type="text" component={this.renderField}></Field></div>
 
@@ -29,7 +40,8 @@ class EventsNew extends Component {
   }
 }
 
-// const mapDispatchToProps = ({ postEvents })
+const mapDispatchToProps = ({ postEvents })
+
 const validate = values => {
   const errors = {}
 
@@ -40,7 +52,7 @@ const validate = values => {
   return errors
 }
 
-export default connect(null, null)(
+export default connect(null, mapDispatchToProps)(
   // Error: Field must be inside a component decorated with reduxForm()対策
   // reduxForm関数で帰ってくる引数にEventsNewを入れる　
   reduxForm({ validate, form: 'eventNewForm' })(EventsNew)
