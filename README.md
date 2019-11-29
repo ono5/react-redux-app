@@ -1,5 +1,16 @@
 # react-redux-app
 
+## Install
+
+```
+# 外部のサーバーに対してhttpリクエストを送る
+yarn add axios
+
+# Reduxのactionクリエーターに非同期処理を実装するためのもの
+yarn add redux-thunk
+
+```
+
 ## JSX
 JSXは、JavaScriptXMLの略でJavaScriptを拡張したテンプレート言語。
 
@@ -117,3 +128,25 @@ action is a javascript object.
 actionが発動したとき、そのactionに組み込まれているtypeに応じて、状態(state)をどう変化させるのか定義するもの。
 
 ### Store
+
+## redux-thunk
+[GitHub](https://github.com/reduxjs/redux-thunk)
+
+### Motivation
+
+Redux Thunk middleware allows you to write action creators that return a function instead of an action. The thunk can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met. The inner function receives the store methods dispatch and getState as parameters.
+
+アクションの代わりに関数を返すことができる。
+
+## lodshは便利
+
+```
+console.log(action.response.data)
+console.log(_.mapKeys(action.response.data, 'id'))
+```
+
+```
+9: {id: 1, title: "Let's have an event 1!!!!!", body: "This is the body for event 1."}
+
+1: {id: 1, title: "Let's have an event 1!!!!!", body: "This is the body for event 1."}
+```
