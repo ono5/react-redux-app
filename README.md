@@ -155,3 +155,6 @@ console.log(_.mapKeys(action.response.data, 'id'))
 
 1: {id: 1, title: "Let's have an event 1!!!!!", body: "This is the body for event 1."}
 ```
+
+## Redux Form
+[Getting Started With redux-form](https://redux-form.com/8.2.2/docs/gettingstarted.md/)
