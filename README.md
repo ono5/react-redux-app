@@ -186,3 +186,8 @@ const enhancer = process.env.NODE_ENV === 'development' ?
 
 ## Redux DevTools
 [URL](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=ja)
+
+## スプレッド演算子
+「...」
+
+https://ja.reactjs.org/docs/jsx-in-depth.html#spread-attributes
