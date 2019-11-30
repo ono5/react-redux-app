@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import {
+    CREATE_EVENTS,
     READ_EVENTS,
     DELETE_EVENTS,
     READ_EVENT,
@@ -9,6 +10,7 @@ import {
 
 export default (events = {}, action) => {
     switch (action.type) {
+        case CREATE_EVENTS:
         case READ_EVENTS:
         case UPDATE_EVENT:
             // console.log(action.response.data)
