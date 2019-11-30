@@ -12,6 +12,12 @@ class EventsShow extends Component {
     this.onDeleteClick = this.onDeleteClick.bind(this)
   }
 
+  // renderingが完了したらイベント情報を再取得する
+  componentDidMount() {
+    const { id } = this.props.match.params
+    if (id) this.props.getEvent(id)
+  }
+
   renderField(field) {
     const { input, label, type, meta: {touched, error}} = field
     return (<div>
@@ -50,8 +56,6 @@ class EventsShow extends Component {
   }
 }
 
-const mapDispatchToProps = ({ deleteEvents })
-
 const validate = values => {
   const errors = {}
 
@@ -62,8 +66,17 @@ const validate = values => {
   return errors
 }
 
-export default connect(null, mapDispatchToProps)(
+// 現在の状態, 持っているprops
+const mapStateToProps = (state, ownProps) => {
+  const event = state.events[ownProps.match.params.id]
+  return { initialValues: event, event }
+}
+const mapDispatchToProps = ({ deleteEvents, getEvent })
+
+export default connect(mapStateToProps, mapDispatchToProps)(
   // Error: Field must be inside a component decorated with reduxForm()対策
-  // reduxForm関数で帰ってくる引数にEventsNewを入れる　
-  reduxForm({ validate, form: 'eventShowForm' })(EventsShow)
+  // reduxForm関数で帰ってくる引数にEventsNewを入れる
+  // enableReinitializeは、initialValuesの値が変わるたびにformが初期化される
+  // https://redux-form.com/6.0.0-rc.4/docs/api/reduxform.md/
+  reduxForm({ validate, form: 'eventShowForm', enableReinitialize: true })(EventsShow)
 )
