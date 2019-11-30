@@ -205,3 +205,11 @@ yarn add material-ui@0.20.0
 ```
 
 [Usage](https://material-ui.com/getting-started/usage/)
+
+## React Context API
+
+[コンテクスト](https://ja.reactjs.org/docs/context.html)
+
+```
+典型的な React アプリケーションでは、データは props を通してトップダウン（親から子）で渡されますが、アプリケーション内の多くのコンポーネントから必要とされる特定のタイプのプロパティ（例： ロケール設定、UI テーマ）にとっては面倒です。コンテクストはツリーの各階層で明示的にプロパティを渡すことなく、コンポーネント間でこれらの様な値を共有する方法を提供します。
+```
