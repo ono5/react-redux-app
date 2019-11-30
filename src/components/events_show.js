@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Field, reduxForm } from 'redux-form'
 import { Link } from 'react-router-dom';
 
-import { getEvent, deleteEvents, pugEvent } from '../actions'
+import { getEvent, deleteEvents, putEvent } from '../actions'
 
 class EventsShow extends Component {
   constructor(props) {
@@ -35,19 +35,20 @@ class EventsShow extends Component {
   }
 
   async onSubmit(values) {
-    // await this.props.postEvents(values)
+    await this.props.putEvent(values)
     this.props.history.push('/')
   }
 
   render() {
-    const { handleSubmit, pristine, submitting } = this.props
+    const { handleSubmit, pristine, submitting, invalid } = this.props
     return (
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <div><Field label="Title" name="title" type="text" component={this.renderField}></Field></div>
           <div><Field label="Body" name="body" type="text" component={this.renderField}></Field></div>
 
           <div>
-            <input type="submit" value="Submit" disabled={pristine || submitting} />
+            {/* Invalidを使って、Update時もsubmitを押せなくする */}
+            <input type="submit" value="Submit" disabled={pristine || submitting || invalid} />
             <Link to="/">Cancel</Link>
             <Link to="/" onClick={this.onDeleteClick}>Delete</Link>
           </div>
@@ -71,7 +72,7 @@ const mapStateToProps = (state, ownProps) => {
   const event = state.events[ownProps.match.params.id]
   return { initialValues: event, event }
 }
-const mapDispatchToProps = ({ deleteEvents, getEvent })
+const mapDispatchToProps = ({ deleteEvents, getEvent, putEvent })
 
 export default connect(mapStateToProps, mapDispatchToProps)(
   // Error: Field must be inside a component decorated with reduxForm()対策
